@@ -5,9 +5,36 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #E0ECFA;
+  font-family: 'Noto Sans', sans-serif;
+  color: #3d4559;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.cvs{
+  display: flex;
+  justify-content: space-around;
+}
+
+.uploadButton{
+  background-color: #2864d5;
+  height: 60px;
+  justify-content: space-around;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  width: 150px;
+  padding: 10px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 10px;
+  top: 10px;
+  overflow: hidden;
+  border: none;
+  white-space: nowrap;
+  font-size: 10pt;
+  left: 10px;
 }
