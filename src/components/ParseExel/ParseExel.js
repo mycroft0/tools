@@ -3,7 +3,6 @@ import XLSX from "xlsx";
 import '../../index.css'
 import ConvertJSONToCVS from "../ConvertJSONToCVS";
 
-
 const ParseExel = () => {
 
     const handleFile = async (e) => {
@@ -20,16 +19,19 @@ const ParseExel = () => {
             };
             reader.readAsArrayBuffer(e.target.files[0]);
         }
+
     }
 
     return (
         <div>
-            <h1>ParseExel</h1>
-            <input className={'uploadButton'} type='file'  onChange={(e) => handleFile(e)}/>
+            <h1 style={{left: '10px', display: "flex", justifyContent: "center"}}>Convert Excel to CVS</h1>
+            <div className={'excel-parser'}>
+                <label htmlFor={'input'} className={'uploadButton'}>Please choose a file</label>
+                <input id='input' style={{display: "none"}} type='file' onChange={(e) => handleFile(e)}/>
+            </div>
             <ConvertJSONToCVS/>
+
         </div>
-
-
     )
 }
 

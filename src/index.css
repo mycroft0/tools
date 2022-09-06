@@ -21,20 +21,35 @@ code {
 }
 
 .uploadButton{
-  background-color: #2864d5;
-  height: 60px;
-  justify-content: space-around;
-  text-align: center;
   cursor: pointer;
-  position: relative;
-  width: 150px;
-  padding: 10px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 10px;
-  top: 10px;
-  overflow: hidden;
   border: none;
-  white-space: nowrap;
-  font-size: 10pt;
+  font-size: 2em;
   left: 10px;
+  position: relative;
+  padding-top: 45px;
+}
+
+.downloadCSV{
+  height: 60px;
+  width: 200px;
+  background-color: #2864d5;
+  color: #E0ECFA;
+  border-radius: 20px;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+  margin-left: 30px;
+
+}
+
+.excel-parser{
+
+  height: 9em;
+  width: 25em;
+  background-color: #2864d5;
+  border-radius: 30px;
+  margin-left: 2em;
+  display: flex;
+  justify-content: center;
+  color: aliceblue;
 }
