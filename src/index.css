@@ -38,9 +38,21 @@ code {
   justify-content: center;
   display: flex;
   margin-top: 20px;
-  margin-left: 30px;
 
 }
+
+.CSV-Link{
+  color: white;
+  text-decoration: none;
+  padding-top: 20px
+}
+
+.main-text {
+  left: 10px;
+  display: flex;
+  justify-content: center
+}
+
 
 .excel-parser{
 
@@ -48,8 +60,14 @@ code {
   width: 25em;
   background-color: #2864d5;
   border-radius: 30px;
-  margin-left: 2em;
   display: flex;
   justify-content: center;
   color: aliceblue;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
 }
