@@ -1,9 +1,22 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import XLSX from "xlsx";
 import '../../index.css'
-import ConvertJSONToCVS from "../ConvertJSONToCVS";
+import ConvertJSONToCSV from "../ConvertJSONToCSV";
 
-const ParseExel = () => {
+const ParseExcel = () => {
+
+    const [jsonData, setJsonData] = useState([])
+
+    /*
+    * const exportData = async (e) =>{
+        const jsonExcel = await handleFile(e)
+        console.log('done')
+        const CSVl = await ConvertJSONToCSV(jsonExcel)
+        return CSVl
+    }*/
+
+
+    const buffer = []
 
     const handleFile = async (e) => {
         e.preventDefault();
@@ -15,11 +28,12 @@ const ParseExel = () => {
                 const sheetName = workbook.SheetNames[0];
                 const worksheet = workbook.Sheets[sheetName];
                 const json = XLSX.utils.sheet_to_json(worksheet);
-                console.log(json);
+                buffer.push(json)
             };
             reader.readAsArrayBuffer(e.target.files[0]);
-        }
 
+        }
+        setJsonData(buffer)
     }
 
     return (
@@ -28,11 +42,13 @@ const ParseExel = () => {
             <div className={'excel-parser'}>
                 <label htmlFor={'input'} className={'uploadButton'}>Please choose a file</label>
                 <input id='input' style={{display: "none"}} type='file' onChange={(e) => handleFile(e)}/>
-            </div>
-            <ConvertJSONToCVS/>
 
+            </div>
+            <ConvertJSONToCSV data={jsonData}/>
         </div>
     )
 }
 
-export default ParseExel
+export default ParseExcel
+
+

@@ -1,9 +1,10 @@
 import {CSVLink} from "react-csv";
 import '../../index.css'
 
-const ConvertJSONToCVS = () => {
 
-    const data = [
+const ConvertJSONToCSV = ({data}) => {
+
+/*const data = [
         {
             "userId": 1,
             "id": 1,
@@ -322,25 +323,22 @@ const ConvertJSONToCVS = () => {
             "title": "qui labore est occaecati recusandae aliquid quam",
             "completed": false
         }
-    ]
+    ]*/
+console.log(data)
 
     const headers = [
         {
-            label:'userID',
-            key: 'userId'
+            label: 'city',
+            key: 'city'
         },
         {
-            label:'id',
+            label: 'id',
             key: 'id'
         },
         {
-            label:'title',
+            label: 'title',
             key: 'title'
         },
-        {
-            label:'completed',
-            key: 'completed'
-        }
     ]
 
     const csvLink = {
@@ -349,7 +347,6 @@ const ConvertJSONToCVS = () => {
         data: data
     }
 
-
     return (
         <div className={'downloadCSV'}>
             <CSVLink {...csvLink}>Export to CSV</CSVLink>
@@ -357,4 +354,5 @@ const ConvertJSONToCVS = () => {
     )
 }
 
-export default ConvertJSONToCVS
+export default ConvertJSONToCSV
+
