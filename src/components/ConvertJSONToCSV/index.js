@@ -8,8 +8,8 @@ const ConvertJSONToCSV = ({data}) => {
 
     const headers = [
         {
-            label: 'id',
-            key: 'Variabilní symbol'
+            label: ' daily rate ',
+            key: ' daily rate '
         },
         {
             label: 'Prefix',

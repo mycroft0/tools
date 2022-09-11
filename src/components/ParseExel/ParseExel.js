@@ -6,6 +6,8 @@ import ConvertJSONToCSV from "../ConvertJSONToCSV";
 const ParseExcel = () => {
 
     const [jsonData, setJsonData] = useState([])
+    const [isDataFetch, setIsDataFetch] = useState(false)
+
 
     const handleFile = async (e) => {
         e.preventDefault();
@@ -18,10 +20,21 @@ const ParseExcel = () => {
                 const worksheet = workbook.Sheets[sheetName];
                 const json = XLSX.utils.sheet_to_json(worksheet);
                 setJsonData(json)
+                setIsDataFetch(true)
+
             };
+
             reader.readAsArrayBuffer(e.target.files[0]);
         }
     }
+    console.log(isDataFetch)
+    useEffect(() => {
+        if (jsonData > 1) {
+            setIsDataFetch(true)
+        } else {
+            setIsDataFetch(false)
+        }
+    }, [])
 
     return (
         <div className={'container'}>
@@ -30,6 +43,8 @@ const ParseExcel = () => {
                 <label htmlFor={'input'} className={'uploadButton'}>Please choose a file</label>
                 <input id='input' style={{display: "none"}} type='file' onChange={(e) => handleFile(e)}/>
             </div>
+            {
+                isDataFetch && <p>File uploaded</p>}
             <ConvertJSONToCSV data={jsonData}/>
         </div>
     )
