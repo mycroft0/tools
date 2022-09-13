@@ -38,14 +38,15 @@ const ParseExcel = () => {
 
     return (
         <div className={'container'}>
-            <h1 className={'main-text'}>Convert Excel to CVS</h1>
+            <p className={'main-text'}>Convert Excel to CVS</p>
             <div className={'excel-parser'}>
                 <label htmlFor={'input'} className={'uploadButton'}>Please choose a file</label>
                 <input id='input' style={{display: "none"}} type='file' onChange={(e) => handleFile(e)}/>
             </div>
             {
-                isDataFetch && <p>File uploaded</p>}
-            <ConvertJSONToCSV data={jsonData}/>
+                isDataFetch && <p > File uploaded</p>}{
+            isDataFetch && <ConvertJSONToCSV data={jsonData}/>}
+
         </div>
     )
 }
