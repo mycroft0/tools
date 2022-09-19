@@ -4,8 +4,6 @@ import '../../index.css'
 
 const ConvertJSONToCSV = ({data}) => {
 
-    console.log(data)
-
     const headers = [
         {
             label: 'id',
@@ -17,7 +15,7 @@ const ConvertJSONToCSV = ({data}) => {
         },
         {
             label: 'Prefix',
-            key: '?'
+            key: 'Prefix'
         },
         {
             label: 'Project',
@@ -34,7 +32,7 @@ const ConvertJSONToCSV = ({data}) => {
         },
         {
             label: 'Currency',
-            key: '?'
+            key: 'Currency'
         },
         {
             label: 'Description',

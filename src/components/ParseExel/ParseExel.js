@@ -7,7 +7,13 @@ const ParseExcel = () => {
 
     const [jsonData, setJsonData] = useState([])
     const [isDataFetch, setIsDataFetch] = useState(false)
+    const [apiData,setAPIData] = useState([])
 
+    const getAPIData = () =>{
+        fetch('http://localhost:5001/newDataBase/customs/cz')
+            .then(res=>res.json())
+            .then((data) => setAPIData(data))
+    }
 
     const handleFile = async (e) => {
         e.preventDefault();
@@ -27,8 +33,33 @@ const ParseExcel = () => {
             reader.readAsArrayBuffer(e.target.files[0]);
         }
     }
-    console.log(isDataFetch)
+
+    function mrnParser(mrn){
+        return mrn.substr(2, 4);
+    }
+
+    function mrnYearParser(mrn){
+        return mrn.substr(0, 2);
+    }
+
+    jsonData.forEach(item=>{
+        apiData.map(elem =>{
+            if(elem['ico'] === mrnParser(item['MRN'])){
+                item['id'] = elem['id']
+                item['Cost Center'] = elem['costcenter']
+                item['Vat Code'] = 'R00'
+                item['Qty'] = 1
+                item['Number'] = '379-1'
+                item['Currency'] = 'CZK'
+                item['Prefix'] = 'JSD20' + mrnYearParser(item['MRN'])
+
+            }
+        })
+    })
+
     useEffect(() => {
+        getAPIData()
+
         if (jsonData > 1) {
             setIsDataFetch(true)
         } else {
@@ -44,7 +75,7 @@ const ParseExcel = () => {
                 <input id='input' style={{display: "none"}} type='file' onChange={(e) => handleFile(e)}/>
             </div>
             {
-                isDataFetch && <p > File uploaded</p>}{
+                isDataFetch && <p> File uploaded</p>}{
             isDataFetch && <ConvertJSONToCSV data={jsonData}/>}
 
         </div>
